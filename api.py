@@ -52,9 +52,9 @@ class Locations(Resource):
 api.add_resource(Users, "/users")
 api.add_resource(Locations, "/locations")
 
-data_dir = os.listdir("./data")
-if "users.csv" not in data_dir:
-    with open("./data/users.csv", "w") as f:
+if not os.path.exists("./data/users.csv"):
+    os.mkdir("data")
+    with open(users_file, "w") as f:
         f.write("userID,name,city\n")
 
 # driver function
